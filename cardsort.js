@@ -1,11 +1,24 @@
 angular.module('cardSort', [])
-  .controller('ListEntryCtrl', function($scope) {
+  .service('quickSort', function() {
+    var splitItems = null;
+
+    this.setText = function(items) {
+      splitItems = items.trim().split("\n");
+    };
+
+    this.getSorted = function() {
+      return splitItems;
+    };
+
+  })
+  .controller('ListEntryCtrl', function($scope, quickSort) {
 
     $scope.items = "a\nb\nc";
-    $scope.splitItems = null;
 
     $scope.parseItems = function() {
-      $scope.splitItems = $scope.items.trim().split("\n");
-    }
+      quickSort.setText($scope.items);
+    };
+
+    $scope.sortedItems = quickSort.getSorted;
 
   });
