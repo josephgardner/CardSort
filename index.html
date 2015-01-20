@@ -10,12 +10,23 @@
   <div>
     <textarea cols=100 rows=20 ng-model="items"></textarea>
   </div>
-  <button ng-click="parseItems()">Submit!</button>
+  <button type="button" ng-click="parseItems()">Submit!</button>
 
   <ul>
-    <li ng-repeat="item in sortedItems()">{{item}}</li>
+    <li ng-repeat="item in sortedItems">{{item}}</li>
   </ul>
 
+<div ng-hide="sortState == null">
+      <span>
+          <span>{{sortState.left}}</span>
+      </span>
+      <span> {{sortState.isLessThanComp ? ' less than ' : ' greater than '}} </span>
+      <span>
+          <span>{{sortState.right}}</span>
+      </span>
+      <button type="button" ng-click="cont(true)">True</button>
+      <button type="button" ng-click="cont(false)">False</button>
+  </div
 </body>
 
 </html>
